@@ -179,8 +179,10 @@ class CityMap:
             pysakki_nyt = kasiteltava_tila.get_stop()
             if pysakki_nyt == goal:
                 return kasiteltava_tila
-            for naapuri, kyyti in pysakki_nyt['neighbors'].items():
+            for naapuri in pysakki_nyt['neighbors'].keys():
                 to_visit.put(
-                    State(self.stops[naapuri], kasiteltava_tila.get_time(
-                    ) + self.fastest_transition(pysakki_nyt['code'], naapuri, kasiteltava_tila.get_time()), kasiteltava_tila))
+                    State(self.stops[naapuri],
+                          kasiteltava_tila.get_time() + self.fastest_transition(pysakki_nyt['code'],
+                          naapuri, kasiteltava_tila.get_time()),
+                          kasiteltava_tila))
         return None
