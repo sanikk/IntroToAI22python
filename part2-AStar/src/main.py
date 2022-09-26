@@ -1,4 +1,6 @@
-from citymap import CityMap, State
+from citymap_with_visited import CityMap, State
+from citymap import CityMap as cmv
+import time
 
 
 def main():
@@ -15,12 +17,20 @@ def main():
      See test_search.py for examples.
     """
     citymap = CityMap("graph.json", "routes.json")
+    #citymap2 = cmv("graph.json", "routes.json")
     start = citymap.get_stop('1150435')  # meilahdentie
     goal = citymap.get_stop('1130446')  # caloniuksenkatu
     departure_time = 4
-
+    aloitus = time.time()
+    # for x in range(1000):
     tulos = citymap.search(start, goal, departure_time)
     print(tulos)
+    #print(f"Ilman visited: {time.time() - aloitus}")
+
+    #aloitus = time.time()
+    # for x in range(1000):
+    #    tulos = citymap2.search(start, goal, departure_time)
+    #print(f"With visited: {time.time() - aloitus}")
 
 
 if __name__ == '__main__':
