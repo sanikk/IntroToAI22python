@@ -5,6 +5,7 @@ import queue as Q
 from math import sqrt
 
 from numpy import empty
+from requests import put
 
 MAX_TRAM_SPEED = 260.0
 HUGE_NUMBER = 1000000
@@ -172,17 +173,20 @@ class CityMap:
 
         to_visit = Q.PriorityQueue()
         to_visit.put(State(start, time_of_beginning))
-
+        visited = set()
+        visited.add(start['code'])
         # Implement me
         while not to_visit.empty():
             kasiteltava_tila = to_visit.get()
             pysakki_nyt = kasiteltava_tila.get_stop()
             if pysakki_nyt == goal:
                 return kasiteltava_tila
-            for naapuri in pysakki_nyt['neighbors'].keys():
-                to_visit.put(
-                    State(self.stops[naapuri],
-                          kasiteltava_tila.get_time() + self.fastest_transition(pysakki_nyt['code'],
-                          naapuri, kasiteltava_tila.get_time()),
-                          kasiteltava_tila))
+            [to_visit.put(State(self.stops[naapuri], kasiteltava_tila.get_time() + self.fastest_transition(pysakki_nyt['code'], naapuri,
+                                                                                                           kasiteltava_tila.get_time()), kasiteltava_tila)) for naapuri in pysakki_nyt['neighbors'].keys() if naapuri not in visited]
+            # for naapuri in pysakki_nyt['neighbors'].keys():
+            #    to_visit.put(
+            #        State(self.stops[naapuri],
+            #              kasiteltava_tila.get_time() + self.fastest_transition(pysakki_nyt['code'],
+            #              naapuri, kasiteltava_tila.get_time()),
+            #              kasiteltava_tila))
         return None
