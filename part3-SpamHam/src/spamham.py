@@ -91,16 +91,21 @@ class SpamHam:
         :return: probability that the message is spam (float)
         """
         # Implement me
+        calculated = {}
         logR = log(0.5) - log(0.5)
         for word in words:
-            if word in self.spam:
-                spamfaktor = self.spam[word] / 75268
+            if word in calculated:
+                spamfaktor, hamfaktor = calculated[word]
             else:
-                spamfaktor = SMALL_NUMBER
-            if word in self.ham:
-                hamfaktor = self.ham[word] / 290673
-            else:
-                hamfaktor = SMALL_NUMBER
+                if word in self.spam:
+                    spamfaktor = self.spam[word] / 75268
+                else:
+                    spamfaktor = SMALL_NUMBER
+                if word in self.ham:
+                    hamfaktor = self.ham[word] / 290673
+                else:
+                    hamfaktor = SMALL_NUMBER
+                calculated[word] = (spamfaktor, hamfaktor)
             logR += log(spamfaktor) - log(hamfaktor)
 
         # total words in spam messages: 75268

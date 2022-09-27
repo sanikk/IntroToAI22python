@@ -59,10 +59,10 @@ def main():
     state = TicTacToe(empty_board, True)
     # play(state)
     state2 = TicTacToe('o?ox??xo?', True)
-    # play(state2)
+    play(state2)
 
     exa_board_2 = 'oox?x?ox?'
-    play(TicTacToe(exa_board_2, True))
+    # play(TicTacToe(exa_board_2, True))
     #print(alpha_beta_value(TicTacToe(exa_board_2, True)))
     # alpha_beta_value(exa_state_2)
 

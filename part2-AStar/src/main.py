@@ -21,7 +21,7 @@ def main():
     start = citymap.get_stop('1150435')  # meilahdentie
     goal = citymap.get_stop('1130446')  # caloniuksenkatu
     departure_time = 4
-    aloitus = time.time()
+    # aloitus = time.time()
     # for x in range(1000):
     tulos = citymap.search(start, goal, departure_time)
     print(tulos)
