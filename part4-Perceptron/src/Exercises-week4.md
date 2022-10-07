@@ -27,13 +27,17 @@ Generate a sample of n=100 000 tuples. Use it to approximate the following condi
 
     P(B | R,G,¬S)
 
-hel
+b 0.1-0.9
+B is independent of the others, so it should follow 0.1-0.9 distribution.
+
+If radio works, then battery surely is working.
 
     P(S | R,I,G)
-hel
+
+should follow 0.01 - 0.99 distr
 
     P(S | ¬R,I,G) 
-hel
+should still follow same distribution
 
 and (don't forget this part):
 
@@ -41,3 +45,5 @@ and (don't forget this part):
     Give an interpretation to the above probabilities. Are they in line with your intuition? In other words, do they make sense? 
 
 ## Exercise 3
+Kohtaan 1: 0.136004217185029
+Kohtaan 2: 0.002702702702702703
