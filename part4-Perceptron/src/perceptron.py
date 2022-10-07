@@ -140,7 +140,9 @@ class NearestFlanders(Perceptron):
 
         self.data = [{'vector': v, 'char': c} for (v, c) in zip(idata, cdata)]
         random.seed()
-        self.weights = [0 for i in range(NUMBER_OF_PIXELS)]
+        #self.weights = [0 for i in range(NUMBER_OF_PIXELS)]
+        # dict jossa jokaiselle
+        self.weights = {}
 
     def train(self, target_char, opposite_char, steps):
         # Implement method
