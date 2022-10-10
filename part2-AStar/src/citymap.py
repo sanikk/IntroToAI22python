@@ -174,11 +174,11 @@ class CityMap:
         to_visit = Q.PriorityQueue()
         to_visit.put(State(start, time_of_beginning))
         visited = set()
-        visited.add(start['code'])
         # Implement me
         while not to_visit.empty():
             kasiteltava_tila = to_visit.get()
             pysakki_nyt = kasiteltava_tila.get_stop()
+            visited.add(pysakki_nyt)
             if pysakki_nyt == goal:
                 return kasiteltava_tila
             [to_visit.put(State(self.stops[naapuri], kasiteltava_tila.get_time() + self.fastest_transition(pysakki_nyt['code'], naapuri,
