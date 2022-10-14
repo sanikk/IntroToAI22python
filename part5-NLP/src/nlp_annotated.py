@@ -42,7 +42,7 @@ def nlp(input_file):
                     # add code here to increment the count of the verb verb
                     pass
         counter += 1
-        if counter == 3:
+        if counter == 10:
             break
     # print out the verbs that have count > 0 in the order of decreasing 
     # frequency, so that the most popular verb is printed first, etc.

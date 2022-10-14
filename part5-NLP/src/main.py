@@ -1,4 +1,4 @@
-from nlp import nlp
+from nlp_annotated import nlp
 
 TEXT_FILE1 = 'metamorphosis.txt'
 # TEXT_FILE2 = 'wikipedia.txt'
